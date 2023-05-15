@@ -5,6 +5,7 @@ import { heroBlockSchema } from "../components/blocks/hero";
 import { testimonialBlockSchema } from "../components/blocks/testimonial";
 import { ColorPickerInput } from "../components/fields/color";
 import { iconSchema } from "../components/util/icon";
+const LOCAL_KEY = "tinacns-fake-auth"
 
 const config = defineConfig({
   contentApiUrlOverride: "/api/gql",
@@ -16,7 +17,31 @@ const config = defineConfig({
   token: process.env.TINA_TOKEN!,
   admin: {
     auth: {
-      useLocalAuth: true,
+       customAuth: true,
+      authenticate: async () => {
+        // Add your authentication logic here
+        localStorage.setItem(LOCAL_KEY, "some-token");
+      },
+      getToken: async () => {
+        // Add your own getting token
+        const token = localStorage.getItem(LOCAL_KEY);
+        if (!token) {
+          return { id_token: "" };
+        }
+        return { id_token: token };
+      },
+      getUser: async () => {
+        // Add your own getting user
+        // if this function returns a truthy value, the user is logged in and if it rutnrs
+        if (localStorage.getItem(LOCAL_KEY)) {
+          return true;
+        }
+        return false;
+      },
+      logout: async () => {
+        // add your own logout logic
+        localStorage.removeItem(LOCAL_KEY);
+      },
     },
   },
   media: {
