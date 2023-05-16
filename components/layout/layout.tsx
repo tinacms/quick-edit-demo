@@ -5,6 +5,19 @@ import { Footer } from "./footer";
 import { Theme } from "./theme";
 import layoutData from "../../content/global/index.json";
 import { Global } from "../../tina/__generated__/types";
+import { BiError } from "react-icons/bi";
+
+const DemoBanner = () => {
+  return (
+    <div className="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 rounded-full shadow-[0_0_32px_12px_rgba(0,132,255,0.15),0_0_12px_2px_rgba(0,132,255,0.15)] flex items-center gap-x-6 bg-gradient-to-r from-blue-600 to-blue-500 dark:from-blue-700 dark:to-blue-800 border border-blue-500 dark:border-blue-700 px-6 py-2.5 z-">
+      <p className="text-base drop-shadow leading-6 text-white flex flex-wrap gap-3">
+        <BiError className="w-6 h-auto opacity-70 -mx-0.5" />
+        <b className="">This is a demo site.</b>
+        <span className="opacity-70">Saves will not persist.</span>
+      </p>
+    </div>
+  );
+};
 
 export const Layout = ({
   rawData = {},
@@ -42,17 +55,6 @@ export const Layout = ({
         )}
       </Head>
       <Theme data={data?.theme}>
-      <div className="sticky top-0 flex items-center gap-x-6 bg-gray-900 px-6 py-2.5 sm:px-3.5 sm:before:flex-1">
-      <p className="text-sm leading-6 text-white">
-          This is a demo site.{" "} Saves will not persist.
-      </p>
-      <div className="flex flex-1 justify-end">
-        <button type="button" className="-m-3 p-3 focus-visible:outline-offset-[-4px]">
-          <span className="sr-only">Dismiss</span>
-          {/* <XMarkIcon className="h-5 w-5 text-white" aria-hidden="true" /> */}
-        </button>
-      </div>
-    </div>     
         <div
           className={`min-h-screen flex flex-col ${
             data.theme.font === "nunito" && "font-nunito"
@@ -70,6 +72,7 @@ export const Layout = ({
             icon={data?.header.icon}
           />
         </div>
+        <DemoBanner />
       </Theme>
     </>
   );
