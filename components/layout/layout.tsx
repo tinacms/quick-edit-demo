@@ -9,9 +9,9 @@ import { BiError } from "react-icons/bi";
 
 const DemoBanner = () => {
   return (
-    <div className="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 rounded-full shadow-[0_0_32px_12px_rgba(0,132,255,0.15),0_0_12px_2px_rgba(0,132,255,0.15)] flex items-center gap-x-6 bg-gradient-to-r from-blue-600 to-blue-500 dark:from-blue-700 dark:to-blue-800 border border-blue-500 dark:border-blue-700 px-6 py-2.5 z-">
-      <p className="text-base drop-shadow leading-6 text-white flex flex-wrap gap-3">
-        <BiError className="w-6 h-auto opacity-70 -mx-0.5" />
+    <div className="fixed bottom-5 lg:bottom-6 left-1/2 -translate-x-1/2 z-50 rounded-full shadow-[0_0_32px_12px_rgba(0,132,255,0.15),0_0_12px_2px_rgba(0,132,255,0.15)] flex flex-1 items-center gap-x-6 bg-gradient-to-r from-blue-600 to-blue-500 dark:from-blue-700 dark:to-blue-800 border border-blue-500 dark:border-blue-700 px-6 py-2.5 z-50">
+      <p className="text-center text-sm lg:text-base drop-shadow leading-5 lg:leading-6 text-white flex flex-wrap justify-center gap-x-3 gap-y-2">
+        <BiError className="w-5 lg:w-6 h-auto opacity-70 -mx-0.5" />
         <b className="">This is a demo site.</b>
         <span className="opacity-70">Saves will not persist.</span>
       </p>
