@@ -7,6 +7,7 @@ import {
   PageBlocksFeaturesItems,
 } from "../../tina/__generated__/types";
 import { tinaField } from "tinacms/dist/react";
+import { vercelEditInfo } from "@tinacms/vercel-previews";
 
 export const Feature = ({
   featuresColor,
@@ -30,7 +31,8 @@ export const Feature = ({
       )}
       {data.title && (
         <h3
-          data-tinafield={tinaField(data, "title")}
+          // data-tinafield={tinaField(data, "title")}
+          data-vercel-edit-info={vercelEditInfo(data, "title")}
           className="text-2xl font-semibold title-font"
         >
           {data.title}
