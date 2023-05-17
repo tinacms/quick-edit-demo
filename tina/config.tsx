@@ -3,9 +3,9 @@ import { contentBlockSchema } from "../components/blocks/content";
 import { featureBlockSchema } from "../components/blocks/features";
 import { heroBlockSchema } from "../components/blocks/hero";
 import { testimonialBlockSchema } from "../components/blocks/testimonial";
-import { ColorPickerInput } from "../components/fields/color";
+import { ColorPickerInput } from "./fields/color";
 import { iconSchema } from "../components/util/icon";
-const LOCAL_KEY = "tinacns-fake-auth"
+const LOCAL_KEY = "tinacns-fake-auth";
 
 const config = defineConfig({
   contentApiUrlOverride: "/api/gql",
@@ -17,7 +17,7 @@ const config = defineConfig({
   token: process.env.TINA_TOKEN!,
   admin: {
     auth: {
-       customAuth: true,
+      customAuth: true,
       authenticate: async () => {
         // Add your authentication logic here
         localStorage.setItem(LOCAL_KEY, "some-token");
