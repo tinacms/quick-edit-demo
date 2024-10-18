@@ -3974,7 +3974,7 @@
   dependencies:
     "@tinacms/graphql" "1.4.13"
 
-"@tinacms/datalayer@^1.2.11":
+"@tinacms/datalayer@^1.3.5":
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/@tinacms/datalayer/-/datalayer-1.3.5.tgz#fdb2e416a247c90255558d9476502aa915359259"
   integrity sha512-tRyUDNePUBEmfEAywUrUapPyy/+gl3YF5P7BiA7aowrpma7Kr3DZvIn7d5j9V8fl0/ErOG5L0/h9WkTvm+2ENA==

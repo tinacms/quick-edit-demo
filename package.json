@@ -27,7 +27,7 @@
   "dependencies": {
     "@headlessui/react": "1.7.5",
     "@tailwindcss/typography": "^0.5.8",
-    "@tinacms/datalayer": "^1.2.11",
+    "@tinacms/datalayer": "^1.3.5",
     "date-fns": "^2.23.0",
     "graphql": "15.8.0",
     "mongodb-level": "^0.0.2",
