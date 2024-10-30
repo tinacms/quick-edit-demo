@@ -382,7 +382,7 @@ const config = defineConfig({
             type: "object",
             list: true,
             name: "blocks",
-            label: "Sections",
+            label: "Blocks",
             ui: {
               visualSelector: true,
             },
