@@ -28,8 +28,23 @@ export const contentBlockSchema: TinaTemplate = {
   label: "Content",
   ui: {
     previewSrc: "/blocks/content.png",
-    defaultItem: {
-      body: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.",
+    defaultItem: () => {
+      return {
+        body: {
+          type: "root",
+          children: [
+            {
+              type: "p",
+              children: [
+                {
+                  type: 'text',
+                  text: "Using blocks in TinaCMS is pretty straightforward. Each block is like a mini content piece you can add, edit, or move around wherever you need it. Just click into a block to make changes right on the page—text, images, whatever you’re working with. It’s a nice way to keep things organized without getting into the code.",
+                },
+              ],
+            },
+          ],
+        }
+      }
     },
   },
   fields: [
