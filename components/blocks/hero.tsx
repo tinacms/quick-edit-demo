@@ -101,7 +101,20 @@ export const heroBlockSchema: TinaTemplate = {
     defaultItem: {
       tagline: "Here's some text above the other text",
       headline: "This Big Text is Totally Awesome",
-      text: "Phasellus scelerisque, libero eu finibus rutrum, risus risus accumsan libero, nec molestie urna dui a leo.",
+      text: {
+        type: "root",
+        children: [
+          {
+            type: "p",
+            children: [
+              {
+                type: 'text',
+                text: "Blocks in TinaCMS follow templates, so each one comes with its own structure—like text, images, or lists. This setup keeps things organized and consistent, making life easier for both editors and devs. Just pick the blocks you need, add your content, and arrange them however works best.",
+              },
+            ],
+          },
+        ],
+      },
     },
   },
   fields: [
