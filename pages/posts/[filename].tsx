@@ -2,11 +2,11 @@ import { Post } from "../../components/posts/post";
 import { dbConnection } from "../../lib/databaseConnection";
 import { useTina } from "tinacms/dist/react";
 import { Layout } from "../../components/layout";
-import { InferGetStaticPropsType } from "next";
+import client from "../../tina/__generated__/client";
 
 // Use the props returned by get static props
 export default function BlogPostPage(
-  props: InferGetStaticPropsType<typeof getStaticProps>
+  props
 ) {
   const { data } = useTina({
     query: props.query,
@@ -28,13 +28,17 @@ export default function BlogPostPage(
 }
 
 export const getStaticProps = async ({ params }) => {
-  const tinaProps = await dbConnection.queries.blogPostQuery({
+  // const tinaProps = await client.queries.post({relativePath: `${params.filename}.mdx`});
+  // console.log(tinaProps);
+  const tinaProps = await client.queries.post({
     relativePath: `${params.filename}.mdx`,
   });
   return {
     props: {
-      ...tinaProps,
-    },
+        data: tinaProps.data,
+        query: tinaProps.query,
+        variables: tinaProps.variables,
+      }
   };
 };
 
@@ -54,7 +58,3 @@ export const getStaticPaths = async () => {
     fallback: "blocking",
   };
 };
-
-export type PostType = InferGetStaticPropsType<
-  typeof getStaticProps
->["data"]["post"];
