@@ -2,6 +2,9 @@
   "name": "@tinacms/starter",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "20.17.0"
+  },
   "scripts": {
     "dev": "tinacms dev -c \"next dev\"",
     "build": "tinacms build && next build",
