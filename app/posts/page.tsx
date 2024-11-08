@@ -1,9 +1,9 @@
 import Layout from "../../components/layout/layout";
-import databaseClient from "../../tina/__generated__/databaseClient";
+import client from "../../tina/__generated__/databaseClient";
 import PostsClientPage from "./client-page";
 
 export default async function PostsPage() {
-  const posts = await databaseClient.queries.postConnection();
+  const posts = await client.queries.postConnection();
 
   if (!posts) {
     return null;

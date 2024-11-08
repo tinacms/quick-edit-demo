@@ -7,7 +7,7 @@ import Page from "./collection/page";
 import { MockAuthProvider } from "./mock-auth-provider";
 
 const config = defineConfig({
-  // contentApiUrlOverride: "/api/gql",
+  contentApiUrlOverride: "/api/gql",
   clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID!,
   branch:
     process.env.NEXT_PUBLIC_TINA_BRANCH! || // custom branch env override

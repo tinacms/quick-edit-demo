@@ -1,5 +1,5 @@
 import React from "react";
-import databaseClient from "../../../tina/__generated__/databaseClient";
+import client from "../../../tina/__generated__/databaseClient";
 import Layout from "../../../components/layout/layout";
 import PostClientPage from "./client-page";
 
@@ -9,7 +9,7 @@ export default async function PostPage({
   params: { filename: string[] };
 }) {
   const { filename } = await params;
-  const data = await databaseClient.queries.post({
+  const data = await client.queries.post({
     relativePath: `${filename.join("/")}.mdx`,
   });
 
@@ -21,7 +21,7 @@ export default async function PostPage({
 }
 
 export async function generateStaticParams() {
-  const posts = await databaseClient.queries.postConnection();
+  const posts = await client.queries.postConnection();
   const paths = posts.data?.postConnection.edges.map((edge) => ({
     filename: edge.node._sys.breadcrumbs,
   }));
