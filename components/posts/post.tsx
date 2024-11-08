@@ -16,6 +16,7 @@ import { Container } from "../util/container";
 import { Section } from "../util/section";
 import { useTheme } from "../layout";
 import format from "date-fns/format";
+import parseISO from "date-fns/parseISO";
 import { enUS } from 'date-fns/locale';
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { Prism } from "tinacms/dist/rich-text/prism";
@@ -133,7 +134,7 @@ export const Post = (props: any) => {
   const locale = enUS;
 
 if (!isNaN(date.getTime())) {
-  formattedDate = format(props.date, "MMM dd, yyyy", { locale });
+  formattedDate = format(parseISO(props.date), "MMM dd, yyyy", { locale });
 }
 
   return (
