@@ -15,7 +15,7 @@ import React from "react";
 import { Container } from "../util/container";
 import { Section } from "../util/section";
 import { useTheme } from "../layout";
-import {format} from "date-fns/format";
+import format from "date-fns/format";
 import { enUS } from 'date-fns/locale';
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { Prism } from "tinacms/dist/rich-text/prism";
