@@ -58,7 +58,7 @@ export const components: Components<{
       <div className="bg-white rounded-md">
         <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
           <div className="">
-            <TinaMarkdown content={props.children} />
+            <TinaMarkdown content={props.children}/>
           </div>
           <div className="mt-8 ">
             <form className="sm:flex">

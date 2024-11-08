@@ -4,7 +4,7 @@ import { ThemeProvider } from "../components/theme-provider";
 import { Inter as FontSans, Lato, Nunito } from "next/font/google";
 import { cn } from "../lib/utils";
 import { Metadata } from "next";
-import client from "../tina/__generated__/client";
+import databaseClient from "../tina/__generated__/databaseClient";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -32,7 +32,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const globalQuery = await client.queries.global({
+  const globalQuery = await databaseClient.queries.global({
     relativePath: "index.json",
   });
   const global = globalQuery.data.global;
