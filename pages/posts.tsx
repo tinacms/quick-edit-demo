@@ -23,6 +23,7 @@ export default function HomePage(
 
 export const getStaticProps = async () => {
   const tinaProps = await dbConnection.queries.pageQuery();
+  tinaProps.errors = null;
   return {
     props: {
       ...tinaProps,

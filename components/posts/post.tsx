@@ -15,7 +15,8 @@ import React from "react";
 import { Container } from "../util/container";
 import { Section } from "../util/section";
 import { useTheme } from "../layout";
-import format from "date-fns/format";
+import {format} from "date-fns/format";
+import { enUS } from 'date-fns/locale';
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { Prism } from "tinacms/dist/rich-text/prism";
 import type { TinaMarkdownContent, Components } from "tinacms/dist/rich-text";
@@ -62,9 +63,9 @@ const components: Components<{
       case "utc":
         return <span>{dt.toUTCString()}</span>;
       case "local":
-        return <span>{dt.toLocaleDateString()}</span>;
+        return <span>{dt.toLocaleDateString("en-US")}</span>;
       default:
-        return <span>{dt.toLocaleDateString()}</span>;
+        return <span>{dt.toLocaleDateString("en-US")}</span>;
     }
   },
   NewsletterSignup: (props) => {
@@ -130,9 +131,11 @@ export const Post = (props: PostType) => {
 
   const date = new Date(props.date);
   let formattedDate = "";
-  if (!isNaN(date.getTime())) {
-    formattedDate = format(date, "MMM dd, yyyy");
-  }
+  const locale = enUS;
+
+if (!isNaN(date.getTime())) {
+  formattedDate = format(props.date, "MMM dd, yyyy", { locale });
+}
 
   return (
     <Section className="flex-1">

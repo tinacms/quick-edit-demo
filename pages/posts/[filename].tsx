@@ -2,7 +2,7 @@ import { Post } from "../../components/posts/post";
 import { dbConnection } from "../../lib/databaseConnection";
 import { useTina } from "tinacms/dist/react";
 import { Layout } from "../../components/layout";
-import client from "../../tina/__generated__/client";
+import client from "../../tina/__generated__/databaseClient";
 
 // Use the props returned by get static props
 export default function BlogPostPage(
@@ -33,6 +33,7 @@ export const getStaticProps = async ({ params }) => {
   const tinaProps = await client.queries.post({
     relativePath: `${params.filename}.mdx`,
   });
+
   return {
     props: {
         data: tinaProps.data,
