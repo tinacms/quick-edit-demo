@@ -1,10 +1,12 @@
+"use client";
 import React from "react";
-import { Container } from "../util/container";
-import { Section } from "../util/section";
+
 import { TinaMarkdown } from "tinacms/dist/rich-text";
-import type { TinaTemplate } from "tinacms";
+import type { Template } from "tinacms";
 import { PageBlocksContent } from "../../tina/__generated__/types";
 import { tinaField } from "tinacms/dist/react";
+import { Container } from "../layout/container";
+import { Section } from "../layout/section";
 
 export const Content = ({ data }: { data: PageBlocksContent }) => {
   return (
@@ -23,28 +25,13 @@ export const Content = ({ data }: { data: PageBlocksContent }) => {
   );
 };
 
-export const contentBlockSchema: TinaTemplate = {
+export const contentBlockSchema: Template = {
   name: "content",
   label: "Content",
   ui: {
     previewSrc: "/blocks/content.png",
-    defaultItem: () => {
-      return {
-        body: {
-          type: "root",
-          children: [
-            {
-              type: "p",
-              children: [
-                {
-                  type: 'text',
-                  text: "Using blocks in TinaCMS is pretty straightforward. Each block is like a mini content piece you can add, edit, or move around wherever you need it. Just click into a block to make changes right on the page—text, images, whatever you’re working with. It’s a nice way to keep things organized without getting into the code.",
-                },
-              ],
-            },
-          ],
-        }
-      }
+    defaultItem: {
+      body: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.",
     },
   },
   fields: [
