@@ -20,7 +20,7 @@ import { enUS } from 'date-fns/locale';
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { Prism } from "tinacms/dist/rich-text/prism";
 import type { TinaMarkdownContent, Components } from "tinacms/dist/rich-text";
-import { PostType } from "../../pages/posts/[filename]";
+import  PostType  from "../../pages/posts/[filename]";
 import { tinaField } from "tinacms/dist/react";
 
 const components: Components<{
