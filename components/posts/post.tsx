@@ -16,10 +16,11 @@ import { Container } from "../util/container";
 import { Section } from "../util/section";
 import { useTheme } from "../layout";
 import format from "date-fns/format";
+import parseISO from "date-fns/parseISO";
+import { enUS } from 'date-fns/locale';
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { Prism } from "tinacms/dist/rich-text/prism";
 import type { TinaMarkdownContent, Components } from "tinacms/dist/rich-text";
-import { PostType } from "../../pages/posts/[filename]";
 import { tinaField } from "tinacms/dist/react";
 
 const components: Components<{
@@ -62,9 +63,9 @@ const components: Components<{
       case "utc":
         return <span>{dt.toUTCString()}</span>;
       case "local":
-        return <span>{dt.toLocaleDateString()}</span>;
+        return <span>{dt.toLocaleDateString("en-US")}</span>;
       default:
-        return <span>{dt.toLocaleDateString()}</span>;
+        return <span>{dt.toLocaleDateString("en-US")}</span>;
     }
   },
   NewsletterSignup: (props) => {
@@ -112,7 +113,7 @@ const components: Components<{
   ),
 };
 
-export const Post = (props: PostType) => {
+export const Post = (props: any) => {
   const theme = useTheme();
   const titleColorClasses = {
     blue: "from-blue-400 to-blue-600 dark:from-blue-300 dark:to-blue-500",
@@ -130,9 +131,11 @@ export const Post = (props: PostType) => {
 
   const date = new Date(props.date);
   let formattedDate = "";
-  if (!isNaN(date.getTime())) {
-    formattedDate = format(date, "MMM dd, yyyy");
-  }
+  const locale = enUS;
+
+if (!isNaN(date.getTime())) {
+  formattedDate = format(parseISO(props.date), "MMM dd, yyyy", { locale });
+}
 
   return (
     <Section className="flex-1">

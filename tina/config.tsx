@@ -5,6 +5,7 @@ import { heroBlockSchema } from "../components/blocks/hero";
 import { testimonialBlockSchema } from "../components/blocks/testimonial";
 import { ColorPickerInput } from "./fields/color";
 import { iconSchema } from "../components/util/icon";
+import { MockAuthProvider } from "./mock-auth-provider";
 const LOCAL_KEY = "tinacns-fake-auth";
 
 const config = defineConfig({
@@ -15,35 +16,36 @@ const config = defineConfig({
     process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF! || // Vercel branch env
     process.env.HEAD!, // Netlify branch env
   token: process.env.TINA_TOKEN!,
-  admin: {
-    auth: {
-      customAuth: true,
-      authenticate: async () => {
-        // Add your authentication logic here
-        localStorage.setItem(LOCAL_KEY, "some-token");
-      },
-      getToken: async () => {
-        // Add your own getting token
-        const token = localStorage.getItem(LOCAL_KEY);
-        if (!token) {
-          return { id_token: "" };
-        }
-        return { id_token: token };
-      },
-      getUser: async () => {
-        // Add your own getting user
-        // if this function returns a truthy value, the user is logged in and if it rutnrs
-        if (localStorage.getItem(LOCAL_KEY)) {
-          return true;
-        }
-        return false;
-      },
-      logout: async () => {
-        // add your own logout logic
-        localStorage.removeItem(LOCAL_KEY);
-      },
-    },
-  },
+  // admin: {
+  //   auth: {
+  //     customAuth: true,
+  //     authenticate: async () => {
+  //       // Add your authentication logic here
+  //       localStorage.setItem(LOCAL_KEY, "some-token");
+  //     },
+  //     getToken: async () => {
+  //       // Add your own getting token
+  //       const token = localStorage.getItem(LOCAL_KEY);
+  //       if (!token) {
+  //         return { id_token: "" };
+  //       }
+  //       return { id_token: token };
+  //     },
+  //     getUser: async () => {
+  //       // Add your own getting user
+  //       // if this function returns a truthy value, the user is logged in and if it rutnrs
+  //       if (localStorage.getItem(LOCAL_KEY)) {
+  //         return true;
+  //       }
+  //       return false;
+  //     },
+  //     logout: async () => {
+  //       // add your own logout logic
+  //       localStorage.removeItem(LOCAL_KEY);
+  //     },
+  //   },
+  // },
+  authProvider: new MockAuthProvider(),
   media: {
     // If you wanted cloudinary do this
     // loadCustomStore: async () => {

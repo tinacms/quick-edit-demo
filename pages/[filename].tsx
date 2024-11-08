@@ -1,11 +1,10 @@
-import { InferGetStaticPropsType } from "next";
 import { Blocks } from "../components/blocks-renderer";
 import { useTina } from "tinacms/dist/react";
 import { Layout } from "../components/layout";
 import { dbConnection } from "../lib/databaseConnection";
 
 export default function HomePage(
-  props: InferGetStaticPropsType<typeof getStaticProps>
+  props
 ) {
   const { data } = useTina({
     query: props.query,
