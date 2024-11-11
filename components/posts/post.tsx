@@ -22,6 +22,7 @@ import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { Prism } from "tinacms/dist/rich-text/prism";
 import type { TinaMarkdownContent, Components } from "tinacms/dist/rich-text";
 import { tinaField } from "tinacms/dist/react";
+import { PostType } from "../../pages/posts/[filename]";
 
 const components: Components<{
   BlockQuote: {
@@ -113,7 +114,7 @@ const components: Components<{
   ),
 };
 
-export const Post = (props: any) => {
+export const Post = (props: PostType) => {
   const theme = useTheme();
   const titleColorClasses = {
     blue: "from-blue-400 to-blue-600 dark:from-blue-300 dark:to-blue-500",
