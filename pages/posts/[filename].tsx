@@ -3,6 +3,7 @@ import { dbConnection } from "../../lib/databaseConnection";
 import { useTina } from "tinacms/dist/react";
 import { Layout } from "../../components/layout";
 import client from "../../tina/__generated__/databaseClient";
+import { InferGetStaticPropsType } from "next";
 
 // Use the props returned by get static props
 export default function BlogPostPage(
@@ -59,3 +60,5 @@ export const getStaticPaths = async () => {
     fallback: "blocking",
   };
 };
+
+export type PostType = InferGetStaticPropsType<typeof getStaticProps>["data"]["post"];
