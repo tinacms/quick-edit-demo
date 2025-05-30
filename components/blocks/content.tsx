@@ -1,67 +1,67 @@
+"use client";
 import React from "react";
-import { Container } from "../util/container";
-import { Section } from "../util/section";
+
 import { TinaMarkdown } from "tinacms/dist/rich-text";
-import type { TinaTemplate } from "tinacms";
+import type { Template } from "tinacms";
 import { PageBlocksContent } from "../../tina/__generated__/types";
 import { tinaField } from "tinacms/dist/react";
+import { Section } from "../layout/section";
+import { mermaid } from "./mermaid";
+import { sectionBlockSchemaField } from '../layout/section';
+import { scriptCopyBlockSchema, ScriptCopyBtn } from "../magicui/script-copy-btn";
 
 export const Content = ({ data }: { data: PageBlocksContent }) => {
   return (
-    <Section color={data.color}>
-      <Container
-        className={`prose prose-lg ${
-          data.color === "primary" ? `prose-primary` : `dark:prose-dark`
-        }`}
-        data-tina-field={tinaField(data, "body")}
-        size="large"
-        width="medium"
-      >
-        <TinaMarkdown content={data.body} />
-      </Container>
+    <Section background={data.background!}
+      className="prose prose-lg"
+      data-tina-field={tinaField(data, "body")}
+    >
+      <TinaMarkdown
+        content={data.body}
+        components={{
+          mermaid,
+          scriptCopyBlock: (props: any) => <ScriptCopyBtn {...props} />,
+        }}
+      />
     </Section>
   );
 };
 
-export const contentBlockSchema: TinaTemplate = {
+export const contentBlockSchema: Template = {
   name: "content",
   label: "Content",
   ui: {
     previewSrc: "/blocks/content.png",
-    defaultItem: () => {
-      return {
-        body: {
-          type: "root",
-          children: [
-            {
-              type: "p",
-              children: [
-                {
-                  type: 'text',
-                  text: "Using blocks in TinaCMS is pretty straightforward. Each block is like a mini content piece you can add, edit, or move around wherever you need it. Just click into a block to make changes right on the page—text, images, whatever you’re working with. It’s a nice way to keep things organized without getting into the code.",
-                },
-              ],
-            },
-          ],
-        }
-      }
+    defaultItem: {
+      body: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.",
     },
   },
   fields: [
+    sectionBlockSchemaField as any,
     {
       type: "rich-text",
       label: "Body",
       name: "body",
-    },
-    {
-      type: "string",
-      label: "Color",
-      name: "color",
-      options: [
-        { label: "Default", value: "default" },
-        { label: "Tint", value: "tint" },
-        { label: "Primary", value: "primary" },
+      templates: [
+        scriptCopyBlockSchema,
       ],
-    },
+      overrides: {
+        toolbar: [
+          'heading',
+          'link',
+          'quote',
+          'ul',
+          'ol',
+          'bold',
+          'italic',
+          'code',
+          'codeBlock',
+          'mermaid',
+          'table',
+          'raw',
+          'embed',
+        ]
+      },
+    }
   ],
 };
