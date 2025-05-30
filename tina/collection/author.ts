@@ -1,5 +1,6 @@
 import type { Collection } from "tinacms";
 import ImagePickerInput from "../fields/image";
+import DemoMode from "../fields/demo-mode";
 
 const Author: Collection = {
   label: "Authors",
@@ -29,6 +30,14 @@ const Author: Collection = {
       uploadDir: () => "authors",
       ui: {
         component: ImagePickerInput,
+      }
+    },
+    {
+      type: 'boolean',
+      label: 'Demo Mode',
+      name: 'demoMode',
+      ui: {
+        component: DemoMode,
       }
     },
   ],

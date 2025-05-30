@@ -6,6 +6,7 @@ import { PageBlocksCallout } from "@/tina/__generated__/types";
 import { ArrowRight } from "lucide-react";
 import { AnimatedGroup } from "../motion-primitives/animated-group";
 import { Section, sectionBlockSchemaField } from '../layout/section';
+import DemoMode from "@/tina/fields/demo-mode";
 
 const transitionVariants = {
     item: {
@@ -75,6 +76,14 @@ export const calloutBlockSchema: Template = {
             type: 'string',
             label: 'Url',
             name: 'url',
-        }
+        },
+        {
+            type: 'boolean',
+            label: 'Demo Mode',
+            name: 'demoMode',
+            ui: {
+              component: DemoMode,
+            }
+          },
     ],
 };

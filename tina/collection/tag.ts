@@ -1,4 +1,5 @@
 import type { Collection } from "tinacms";
+import DemoMode from "../fields/demo-mode";
 
 const Tag: Collection = {
   label: "Tags",
@@ -19,6 +20,14 @@ const Tag: Collection = {
       name: "name",
       isTitle: true,
       required: true,
+    },
+    {
+      type: 'boolean',
+      label: 'Demo Mode',
+      name: 'demoMode',
+      ui: {
+        component: DemoMode,
+      }
     },
   ],
 };

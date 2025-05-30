@@ -7,6 +7,7 @@ import { Card, CardContent } from "../ui/card";
 import { tinaField } from "tinacms/dist/react";
 import { sectionBlockSchemaField } from '../layout/section';
 import ImagePickerInput from "@/tina/fields/image";
+import DemoMode from "@/tina/fields/demo-mode";
 
 export const Testimonial = ({ data }: { data: PageBlocksTestimonial }) => {
   return (
@@ -123,6 +124,14 @@ export const testimonialBlockSchema: Template = {
           }
         }
       ],
+    },
+    {
+      type: 'boolean',
+      label: 'Demo Mode',
+      name: 'demoMode',
+      ui: {
+        component: DemoMode,
+      }
     },
   ],
 };

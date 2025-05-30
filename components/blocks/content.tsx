@@ -9,6 +9,7 @@ import { Section } from "../layout/section";
 import { mermaid } from "./mermaid";
 import { sectionBlockSchemaField } from '../layout/section';
 import { scriptCopyBlockSchema, ScriptCopyBtn } from "../magicui/script-copy-btn";
+import DemoMode from "@/tina/fields/demo-mode";
 
 export const Content = ({ data }: { data: PageBlocksContent }) => {
   return (
@@ -62,6 +63,14 @@ export const contentBlockSchema: Template = {
           'embed',
         ]
       },
+    },
+    {
+      type: 'boolean',
+      label: 'Demo Mode',
+      name: 'demoMode',
+      ui: {
+        component: DemoMode,
+      }
     }
   ],
 };

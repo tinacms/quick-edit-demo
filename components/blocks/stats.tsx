@@ -3,6 +3,7 @@ import { tinaField } from "tinacms/dist/react";
 import { PageBlocksStats } from "@/tina/__generated__/types";
 import { Section } from "../layout/section";
 import { sectionBlockSchemaField } from '../layout/section';
+import DemoMode from "@/tina/fields/demo-mode";
 
 export const Stats = ({ data }: { data: PageBlocksStats }) => {
     return (
@@ -91,6 +92,14 @@ export const statsBlockSchema: Template = {
                     name: "type",
                 },
             ],
+        },
+        {
+            type: 'boolean',
+            label: 'Demo Mode',
+            name: 'demoMode',
+            ui: {
+                component: DemoMode,
+            }
         },
     ],
 };

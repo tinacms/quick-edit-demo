@@ -14,6 +14,7 @@ import { TextEffect } from '../motion-primitives/text-effect';
 import HeroVideoDialog from '../ui/hero-video-dialog';
 import { cn } from '@/lib/utils';
 import ImagePickerInput from '@/tina/fields/image';
+import DemoMode from '@/tina/fields/demo-mode';
 const transitionVariants = {
   container: {
     visible: {
@@ -253,6 +254,14 @@ export const heroBlockSchema: Template = {
           description: 'If using a YouTube video, make sure to use the embed version of the video URL',
         }
       ],
+    },
+    {
+      type: 'boolean',
+      label: 'Demo Mode',
+      name: 'demoMode',
+      ui: {
+        component: DemoMode,
+      }
     },
   ],
 };

@@ -2,6 +2,7 @@ import type { Collection } from "tinacms";
 import { ColorPickerInput } from "../fields/color";
 import { iconSchema } from "../fields/icon";
 import { icon } from "mermaid/dist/rendering-util/rendering-elements/shapes/icon.js";
+import DemoMode from "../fields/demo-mode";
 
 const Global: Collection = {
   label: "Global",
@@ -145,6 +146,14 @@ const Global: Collection = {
           ],
         },
       ],
+    },
+    {
+      type: 'boolean',
+      label: 'Demo Mode',
+      name: 'demoMode',
+      ui: {
+        component: DemoMode,
+      }
     },
   ],
 };

@@ -22,14 +22,6 @@ const Post: Collection = {
   },
   fields: [
     {
-      type: 'boolean',
-      label: 'Demo Mode',
-      name: 'demoMode',
-      ui: {
-        component: DemoMode,
-      }
-    },
-    {
       type: 'string',
       label: 'Title',
       name: 'title',
@@ -220,6 +212,14 @@ const Post: Collection = {
         videoBlockSchema,
       ],
       isBody: true,
+    },
+    {
+      type: 'boolean',
+      label: 'Demo Mode',
+      name: 'demoMode',
+      ui: {
+        component: DemoMode,
+      }
     },
   ],
 };

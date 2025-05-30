@@ -11,6 +11,7 @@ import { iconSchema } from "../../tina/fields/icon";
 import { Card, CardContent, CardHeader } from "../ui/card";
 import { Section } from "../layout/section";
 import { sectionBlockSchemaField } from '../layout/section';
+import DemoMode from "@/tina/fields/demo-mode";
 
 export const Features = ({ data }: { data: PageBlocksFeatures }) => {
   return (
@@ -148,6 +149,14 @@ export const featureBlockSchema: Template = {
           },
         },
       ],
+    },
+    {
+      type: 'boolean',
+      label: 'Demo Mode',
+      name: 'demoMode',
+      ui: {
+        component: DemoMode,
+      }
     },
   ],
 };

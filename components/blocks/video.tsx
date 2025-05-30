@@ -5,6 +5,7 @@ import type { Template } from 'tinacms';
 import { PageBlocksVideo } from '@/tina/__generated__/types';
 import { Section } from '../layout/section';
 import { sectionBlockSchemaField } from '../layout/section';
+import DemoMode from '@/tina/fields/demo-mode';
 
 const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });
 
@@ -54,6 +55,14 @@ export const videoBlockSchema: Template = {
       type: 'boolean',
       label: 'Loop',
       name: 'loop',
+    },
+    {
+      type: 'boolean',
+      label: 'Demo Mode',
+      name: 'demoMode',
+      ui: {
+        component: DemoMode,
+      }
     },
   ],
 };

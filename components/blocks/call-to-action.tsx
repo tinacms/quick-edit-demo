@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import { PageBlocksCta } from '@/tina/__generated__/types';
 import { Icon } from '../icon';
 import { Section } from '../layout/section';
+import DemoMode from '@/tina/fields/demo-mode';
 
 export const CallToAction = ({ data }: { data: PageBlocksCta }) => {
     return (
@@ -112,5 +113,13 @@ export const ctaBlockSchema: Template = {
                 },
             ],
         },
+        {
+            type: 'boolean',
+            label: 'Demo Mode',
+            name: 'demoMode',
+            ui: {
+              component: DemoMode,
+            }
+          },
     ],
 };
