@@ -157,14 +157,13 @@ export const DemoIntroSequence: React.FC<DemoIntroSequenceProps> = ({
       
       {/* Demo Dialog */}
       <div 
-        className={`fixed z-[9999] bg-[#e2e8f0]/80 backdrop-blur-md rounded-2xl shadow-2xl h-[400px] border border-gray-200/50 w-80 p-8 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] transform top-1/2 -translate-y-1/2 flex flex-col lg:translate-x-[115%] md:translate-x-[90%] ${
+        className={`fixed z-[9999] bg-[#e2e8f0]/80 backdrop-blur-md rounded-2xl shadow-2xl h-[400px] border border-gray-200/50 w-80 p-8 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] transform md:top-96 top-[500px] -translate-y-1/2 flex flex-col lg:translate-x-[115%] md:translate-x-[90%] ${
           isCompleting
             ? 'opacity-0'
             : 'opacity-100'
         }`}
         style={{ 
-          pointerEvents: 'auto',
-          right: '16px'
+          pointerEvents: 'auto'
         }}
       >
         {/* Header */}
@@ -441,7 +440,7 @@ function getTargetPosition(target: string): string {
     case 'collection-menu':
       return '10% 5%';
     case 'content-area':
-      return '65% 30%';
+      return '70% 30%';
     default:
       return '50% 50%';
   }
