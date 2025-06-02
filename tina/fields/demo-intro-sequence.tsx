@@ -157,7 +157,7 @@ export const DemoIntroSequence: React.FC<DemoIntroSequenceProps> = ({
       
       {/* Demo Dialog */}
       <div 
-        className={`fixed z-[9999] bg-[#e2e8f0]/80 backdrop-blur-md rounded-2xl shadow-2xl h-[400px] border border-gray-200/50 w-80 p-8 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] transform md:top-96 top-[60%] -translate-y-1/2 flex flex-col lg:translate-x-[115%] md:translate-x-[90%] ${
+        className={`fixed z-[9999] bg-[#e2e8f0]/80 backdrop-blur-md rounded-2xl shadow-2xl h-[400px] border border-gray-200/50 w-80 p-8 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] transform md:top-96 top-[60%] -translate-y-1/2 left-1/2 -translate-x-1/2 flex flex-col lg:translate-x-[115%] md:translate-x-[50%] ${
           isCompleting
             ? 'opacity-0'
             : 'opacity-100'
@@ -326,110 +326,80 @@ const HighlightOverlay: React.FC<{ target: string; isAnimating: boolean; isCompl
         }}
       />
       
-      {/* White highlight rings/rectangles */}
-      <div className={`fixed inset-0 pointer-events-none z-[9998] transition-all duration-700 ease-out ${
-        isCompleting ? 'opacity-0 scale-95' : (isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95')
-      }`}>
+      {/* Highlight rings/rectangles */}
+      <div
+        className={`fixed inset-0 pointer-events-none z-[9998] transition-all duration-700 ease-out ${
+          isCompleting ? "opacity-0 scale-95" : isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
+        }`}
+      >
         {isContentArea ? (
           <>
-            {/* Outer rectangle with white glow */}
-            <div 
-              className={`absolute border-2 border-white/60 animate-pulse transition-all duration-700 ease-out ${
-                isAnimating ? 'opacity-50 scale-95' : 'opacity-100 scale-100'
+            {/* Outer rectangle with glow */}
+            <div
+              className={`absolute border-2 border-white/60 rounded-xl animate-pulse transition-all duration-700 ease-out ${
+                isAnimating ? "opacity-50 scale-95" : "opacity-100 scale-100"
               }`}
               style={{
-                width: '350px',
-                height: '500px',
-                left: `calc(${getTargetPosition(target).split(' ')[0]} - 250px)`,
-                top: `calc(${getTargetPosition(target).split(' ')[1]} - 175px)`,
-                boxShadow: '0 0 40px rgba(255, 255, 255, 0.6), inset 0 0 20px rgba(255, 255, 255, 0.3), 0 0 80px rgba(255, 255, 255, 0.3)',
-                transition: 'all 0.7s cubic-bezier(0.25, 1, 0.5, 1)'
+                width: "350px",
+                height: "300px",
+                left: `calc(${getTargetPosition(target).split(" ")[0]} - 175px)`,
+                top: `calc(${getTargetPosition(target).split(" ")[1]} - 150px)`,
+                boxShadow: "0 0 40px rgba(255, 255, 255, 0.6), inset 0 0 20px rgba(255, 255, 255, 0.3)",
+                transition: "all 0.7s cubic-bezier(0.25, 1, 0.5, 1)",
               }}
             />
-            
-            {/* Inner rectangle with bright white glow */}
-            <div 
-              className={`absolute border-2 border-white/80 transition-all duration-700 ease-out ${
-                isAnimating ? 'opacity-50 scale-95' : 'opacity-100 scale-100'
+ 
+            {/* Inner rectangle */}
+            <div
+              className={`absolute border-2 border-white/80 rounded-xl transition-all duration-700 ease-out ${
+                isAnimating ? "opacity-50 scale-95" : "opacity-100 scale-100"
               }`}
               style={{
-                width: '310px',
-                height: '460px',
-                left: `calc(${getTargetPosition(target).split(' ')[0]} - 230px)`,
-                top: `calc(${getTargetPosition(target).split(' ')[1]} - 155px)`,
-                boxShadow: '0 0 30px rgba(255, 255, 255, 0.8), inset 0 0 15px rgba(255, 255, 255, 0.4)',
-                transition: 'all 0.7s cubic-bezier(0.25, 1, 0.5, 1)'
-              }}
-            />
-            
-            {/* Central bright white rectangle */}
-            <div 
-              className={`absolute bg-white/20 transition-all duration-700 ease-out ${
-                isAnimating ? 'opacity-30 scale-95' : 'opacity-70 scale-100'
-              }`}
-              style={{
-                width: '250px',
-                height: '400px',
-                left: `calc(${getTargetPosition(target).split(' ')[0]} - 200px)`,
-                top: `calc(${getTargetPosition(target).split(' ')[1]} - 125px)`,
-                boxShadow: '0 0 50px rgba(255, 255, 255, 0.3), inset 0 0 40px rgba(255, 255, 255, 0.1)',
-                transition: 'all 0.7s cubic-bezier(0.25, 1, 0.5, 1)',
-                filter: 'blur(8px)'
+                width: "310px",
+                height: "260px",
+                left: `calc(${getTargetPosition(target).split(" ")[0]} - 155px)`,
+                top: `calc(${getTargetPosition(target).split(" ")[1]} - 130px)`,
+                boxShadow: "0 0 30px rgba(255, 255, 255, 0.8)",
+                transition: "all 0.7s cubic-bezier(0.25, 1, 0.5, 1)",
               }}
             />
           </>
         ) : (
           <>
-            {/* Outer ring with white glow */}
-            <div 
+            {/* Outer ring with glow */}
+            <div
               className={`absolute border-2 border-white/60 rounded-full animate-pulse transition-all duration-700 ease-out ${
-                isAnimating ? 'opacity-50 scale-95' : 'opacity-100 scale-100'
+                isAnimating ? "opacity-50 scale-95" : "opacity-100 scale-100"
               }`}
               style={{
-                width: '280px',
-                height: '280px',
-                left: `calc(${getTargetPosition(target).split(' ')[0]} - 140px)`,
-                top: `calc(${getTargetPosition(target).split(' ')[1]} - 140px)`,
-                boxShadow: '0 0 40px rgba(255, 255, 255, 0.6), inset 0 0 20px rgba(255, 255, 255, 0.3), 0 0 80px rgba(255, 255, 255, 0.3)',
-                transition: 'all 0.7s cubic-bezier(0.25, 1, 0.5, 1)'
+                width: "280px",
+                height: "280px",
+                left: `calc(${getTargetPosition(target).split(" ")[0]} - 140px)`,
+                top: `calc(${getTargetPosition(target).split(" ")[1]} - 140px)`,
+                boxShadow: "0 0 40px rgba(255, 255, 255, 0.6), inset 0 0 20px rgba(255, 255, 255, 0.3)",
+                transition: "all 0.7s cubic-bezier(0.25, 1, 0.5, 1)",
               }}
             />
-            
-            {/* Inner ring with bright white glow */}
-            <div 
+ 
+            {/* Inner ring */}
+            <div
               className={`absolute border-2 border-white/80 rounded-full transition-all duration-700 ease-out ${
-                isAnimating ? 'opacity-50 scale-95' : 'opacity-100 scale-100'
+                isAnimating ? "opacity-50 scale-95" : "opacity-100 scale-100"
               }`}
               style={{
-                width: '240px',
-                height: '240px',
-                left: `calc(${getTargetPosition(target).split(' ')[0]} - 120px)`,
-                top: `calc(${getTargetPosition(target).split(' ')[1]} - 120px)`,
-                boxShadow: '0 0 30px rgba(255, 255, 255, 0.8), inset 0 0 15px rgba(255, 255, 255, 0.4)',
-                transition: 'all 0.7s cubic-bezier(0.25, 1, 0.5, 1)'
-              }}
-            />
-            
-            {/* Central bright white spot */}
-            <div 
-              className={`absolute bg-white/20 rounded-full transition-all duration-700 ease-out ${
-                isAnimating ? 'opacity-30 scale-95' : 'opacity-70 scale-100'
-              }`}
-              style={{
-                width: '160px',
-                height: '160px',
-                left: `calc(${getTargetPosition(target).split(' ')[0]} - 80px)`,
-                top: `calc(${getTargetPosition(target).split(' ')[1]} - 80px)`,
-                boxShadow: '0 0 50px rgba(255, 255, 255, 0.3), inset 0 0 40px rgba(255, 255, 255, 0.1)',
-                transition: 'all 0.7s cubic-bezier(0.25, 1, 0.5, 1)',
-                filter: 'blur(8px)'
+                width: "240px",
+                height: "240px",
+                left: `calc(${getTargetPosition(target).split(" ")[0]} - 120px)`,
+                top: `calc(${getTargetPosition(target).split(" ")[1]} - 120px)`,
+                boxShadow: "0 0 30px rgba(255, 255, 255, 0.8)",
+                transition: "all 0.7s cubic-bezier(0.25, 1, 0.5, 1)",
               }}
             />
           </>
         )}
       </div>
     </>
-  );
+  )
 };
 
 // Helper function to get target position for highlight
@@ -440,7 +410,7 @@ function getTargetPosition(target: string): string {
     case 'collection-menu':
       return '10% 5%';
     case 'content-area':
-      return '70% 30%';
+      return '50% 300px';
     default:
       return '50% 50%';
   }
